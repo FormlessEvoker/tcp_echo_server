@@ -16,6 +16,12 @@ defmodule TCPEchoServer.IntegrationTest do
     assert :ok = :gen_tcp.send(socket, "Hello")
     assert :ok = :gen_tcp.send(socket, " world\nand one more\n")
 
+    # Sleep to allow the server to process the data
+    # This is not a good practice in production code, but it's fine for a test
+    #
+    # ...Dr. Butler would have a stroke if he saw this
+    Process.sleep(1)
+
     assert {:ok, data} = :gen_tcp.recv(socket, 0, 1000)
 
     assert data == "Hello world\nand one more\n"
