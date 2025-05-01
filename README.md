@@ -1,21 +1,7 @@
 # TCPEchoServer
 
-**TODO: Add description**
+This is just my test implementation of the TCPEchoServer defined in the book [Network Programming in Erlang and Elixir](http://pragprog.com/titles/alnpee/) by Andrea Leopardi. As of creating this project (1st of May 2025), the book is still in Beta.
 
-## Installation
+The code I have written in this project is mostly copied by hand from that book, and is not my own property.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `tcp_echo_server` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:tcp_echo_server, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/tcp_echo_server>.
-
+If you would like to view this book, you can find it on the Pragmatic Programmer website: http://pragprog.com/titles/alnpee/
