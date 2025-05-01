@@ -6,7 +6,7 @@ defmodule TCPEchoServer.Connection do
 
   @spec start_link(:gen_tcp.socket()) :: GenServer.on_start()
   def start_link(socket) do
-    GenServer.start_link(__MODULE__, socket, name: __MODULE__)
+    GenServer.start_link(__MODULE__, socket)
   end
 
   @impl true
@@ -23,7 +23,6 @@ defmodule TCPEchoServer.Connection do
   end
 
   def handle_info({:tcp_closed, socket}, %__MODULE__{socket: socket} = state) do
-    Logger.info("Connection closed")
     {:stop, :normal, state}
   end
 
