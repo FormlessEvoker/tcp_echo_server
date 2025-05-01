@@ -1,4 +1,8 @@
 defmodule TCPEchoServer.Acceptor do
+  @moduledoc """
+  This module listens for incoming TCP connections and spawns a new process for the Echo Server
+  """
+
   use GenServer
 
   require Logger

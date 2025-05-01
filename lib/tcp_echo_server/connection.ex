@@ -1,4 +1,8 @@
 defmodule TCPEchoServer.Connection do
+  @moduledoc """
+  This module handles a TCP connection to a single client for the echo server.
+  """
+
   defstruct [:socket, buffer: <<>>]
 
   use GenServer
@@ -34,16 +38,22 @@ defmodule TCPEchoServer.Connection do
     {:stop, :normal, state}
   end
 
-  defp handle_new_data(state) do
-    case String.split(state.buffer, "\n", parts: 2) do
-      [line, rest] ->
-        :ok = :gen_tcp.send(state.socket, line <> "\n")
-        state = put_in(state.buffer, rest)
-        handle_new_data(state)
+  # This would be used if we wanted to handle fragmented data
+  # But in the current implementation, we are using :line packetization
+  # and therefore this function is not needed.
+  # However, it was valuable to understand how to handle fragmented data
+  # and how to process it in the state. So I'm leaving it here.
+  #
+  # defp handle_new_data(state) do
+  #   case String.split(state.buffer, "\n", parts: 2) do
+  #     [line, rest] ->
+  #       :ok = :gen_tcp.send(state.socket, line <> "\n")
+  #       state = put_in(state.buffer, rest)
+  #       handle_new_data(state)
 
-      _ ->
-        # No complete line yet, just return the state
-        state
-    end
-  end
+  #     _ ->
+  #       # No complete line yet, just return the state
+  #       state
+  #   end
+  # end
 end
